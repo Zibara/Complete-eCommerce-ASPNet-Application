@@ -1,9 +1,22 @@
+using eTickets.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+
+
+ConfigurationManager configuration = builder.Configuration;
+IWebHostEnvironment environment = builder.Environment;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
+// DbContext Configuration
+builder.Services.AddDbContext<AppDbContext>();
+
+
+//IConfiguration configuration = app.Configuration;
+//IWebHostEnvironment Environment = app.Environment;
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -25,3 +38,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+
