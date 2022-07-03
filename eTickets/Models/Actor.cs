@@ -26,7 +26,7 @@ namespace eTickets.Models
 
         // Relationships
 
-#nullable disable
+        #nullable disable
         public List<Actor_Movie> Actors_Movies { get; set; }
     }
 }
