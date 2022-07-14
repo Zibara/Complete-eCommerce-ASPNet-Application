@@ -83,10 +83,9 @@ namespace eTickets.Controllers
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerVM.Password);
 
-            if(newUserResponse.Succeeded)
-            {
+            if(newUserResponse.Succeeded)            
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
-            }
+            
             return View("RegisterCompleted");
         }
 
@@ -97,7 +96,7 @@ namespace eTickets.Controllers
             return RedirectToAction("Index", "Movies");
         }
 
-        public IActionResult Accessdenied(string ReturnUrl)
+        public IActionResult AccessDenied(string ReturnUrl)
         {
             return View();
         }
