@@ -34,7 +34,7 @@ namespace eTickets.Controllers
             var allMovies = await _service.GetAllAsync(n => n.Cinema);
             if (!string.IsNullOrEmpty(searchString))
             {
-                var filterResult = allMovies.Where(n => n.Name.Contains(searchString) || n.Description.Contains(searchString)).ToList();
+                var filterResult = allMovies.Where(n => n.Name.ToLower().Contains(searchString.ToLower()) || n.Description.ToLower().Contains(searchString.ToLower())).ToList();
                 return View("Index", filterResult);
             }
             return View("Index", allMovies);
